@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent("mylink", {
+        init: function() {  
+         this.el.addEventListener("click", (e) => {              
+            window.location = this.data.href;      
+           })
+        }
+      })
+    </script>
+
+
+  </head>
+  <body>
+  <a-scene cursor="rayOrigin: mouse">
+
+    <a-assets>
+    <a-asset-item id="Balde" src="Balde-de-carnada.glb"></a-asset-item>
+    </a-assets>
+  
+    <a-entity gltf-model="Balde-de-carnada.glb" position="-6.91743 -654.96997 7.34373" scale="10 10 10" rotation="0 -260 0"></a-entity>
+
+
+  <a-light type="ambient" intensity="1.5"></a-light>
+  <a-light type="point" position="0 3 0" intensity="2" distance="20"></a-light>
+  <a-light type="point" position="5 3 -5" intensity="1.5" distance="20"></a-light>
+
+
+  </body>
+</html>
