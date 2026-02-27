@@ -4,92 +4,59 @@
     <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
     <script>
-        AFRAME.registerComponent("mylink", {
-        init: function() {  
-         this.el.addEventListener("click", (e) => {              
-            window.location = this.data.href;      
-           })
-        }
-      })
-      AFRAME.registerComponent("mylink", {
-        schema: { href: { type: "string" } },
+       AFRAME.registerComponent("mylink", {
         init: function () {
-          this.el.addEventListener("click", (e) => {
           this.el.addEventListener("click", () => {
             window.location = this.data.href;
           });
         },
       });
+
+      AFRAME.registerComponent("glb-colisionable", {
+        init: function () {
+          this.el.addEventListener("model-loaded", () => {
+            this.el.setAttribute("static-body", "shape: hull");
+          });
+        },
+      });
     </script>
-
-
   </head>
   <body>
-  <a-scene cursor="rayOrigin: mouse">
-    <a-scene
+     <a-scene
+      physics="gravity: -9.8"
       cursor="rayOrigin: mouse"
       raycaster="objects: .tocable"
-      physics="gravity: -9.8"
     >
       <a-assets>
         <a-asset-item id="mundo-2" src="bikini.glb"></a-asset-item>
       </a-assets>
-
-    <a-assets>
-      <a-asset-item id="mundo-2" src="bikini.glb"></a-asset-item>
-    </a-assets>
-  
-      <a-entity gltf-model="#mundo-2" position="0 -2.10 0" scale="50 50 50" rotation="0 -260 0"></a-entity>
-      <a-plane position="20 1 -3.90" src="#imgSortida" rotation="0 -90 0"  transparent="true" mylink="href: https://github.com/Fernando252778/XDDD/tree/main/Aframe;"></a-plane>
-    </a-scene>
-      <a-entity
+ <a-entity
         id="player"
         position="0 2 10"
-        movement-controls="speed: 0.12"
-        kinematic-body="radius: 0.45"
-      >
-        <a-entity camera look-controls="pointerLockEnabled: true"></a-entity>
-      </a-entity>
+        camera
+        look-controls="pointerLockEnabled: true"
+        wasd-controls="acceleration: 35"
+        kinematic-body="radius: 0.45; enableSlopes: true; enableJumps: false"
+      ></a-entity>
 
-      <!-- Modelo visual del mundo (sin colisiones complejas) -->
       <a-entity
+        id="bikini-world"
         class="tocable"
         gltf-model="#mundo-2"
+        glb-colisionable
         position="0 -2.10 0"
         scale="50 50 50"
         rotation="0 -260 0"
-        static-body="shape: mesh"
       ></a-entity>
-
-      <!-- Suelo físico simple para que el jugador camine sin atravesar -->
-      <a-box
-        static-body
-        position="0 -1 0"
-        width="120"
-        height="0.5"
-        depth="120"
-        visible="true"
-      ></a-box>
 
       <a-plane
         class="tocable"
         position="20 1 -3.90"
         src="#imgSortida"
         rotation="0 -90 0"
-        transparent="false"
+        transparent="true"
         mylink="href: https://github.com/Fernando252778/XDDD/tree/main/Aframe;"
       ></a-plane>
-
-      <!-- Jugador como objeto simple para colisión estable -->
-      <a-entity
-        id="player"
-        position="0 6 10"
-        movement-controls="speed: 0.12"
-        kinematic-body="radius: 0.45"
-      >
-        <a-sphere radius="0.45" opacity="0" visible="false"></a-sphere>
-        <a-entity camera look-controls="pointerLockEnabled: true"></a-entity>
-      </a-entity>
     </a-scene>
   </body>
 </html>
