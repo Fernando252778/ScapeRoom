@@ -1,53 +1,85 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aframe-physics-system@4.0.1/dist/aframe-physics-system.min.js"></script>
     <script>
-       AFRAME.registerComponent("mylink", {
+      <html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+  AFRAME.registerComponent("mylink", {
         init: function () {
           this.el.addEventListener("click", () => {
             window.location = this.data.href;
           });
         },
       });
-
-      AFRAME.registerComponent("glb-colisionable", {
-        init: function () {
-          this.el.addEventListener("model-loaded", () => {
-            this.el.setAttribute("static-body", "shape: hull");
-          });
-        },
-      });
     </script>
-  </head>
+     </head>
   <body>
-     <a-scene
-      physics="gravity: -9.8"
-      cursor="rayOrigin: mouse"
-      raycaster="objects: .tocable"
-    >
+    <a-scene cursor="rayOrigin: mouse" raycaster="objects: .tocable">
       <a-assets>
         <a-asset-item id="mundo-2" src="bikini.glb"></a-asset-item>
       </a-assets>
- <a-entity
+        <a-entity
         id="player"
-        position="0 2 10"
         camera
+        position="0 8 30"
         look-controls="pointerLockEnabled: true"
         wasd-controls="acceleration: 35"
-        kinematic-body="radius: 0.45; enableSlopes: true; enableJumps: false"
       ></a-entity>
 
       <a-entity
         id="bikini-world"
         class="tocable"
         gltf-model="#mundo-2"
-        glb-colisionable
         position="0 -2.10 0"
         scale="50 50 50"
         rotation="0 -260 0"
       ></a-entity>
+
+      <a-entity id="cubo-habitacion" position="0 25 0">
+        <a-plane
+          width="220"
+          height="70"
+          position="0 0 -110"
+          material="color: #7cb6ff; opacity: 0.72; side: double"
+        ></a-plane>
+        <a-plane
+          width="220"
+          height="70"
+          position="0 0 110"
+          rotation="0 180 0"
+          material="color: #7cb6ff; opacity: 0.72; side: double"
+        ></a-plane>
+        <a-plane
+          width="220"
+          height="70"
+          position="-110 0 0"
+          rotation="0 90 0"
+          material="color: #7cb6ff; opacity: 0.72; side: double"
+        ></a-plane>
+        <a-plane
+          width="220"
+          height="70"
+          position="110 0 0"
+          rotation="0 -90 0"
+          material="color: #7cb6ff; opacity: 0.72; side: double"
+        ></a-plane>
+        <a-plane
+          width="220"
+          height="220"
+          position="0 35 0"
+          rotation="90 0 0"
+          material="color: #9cc9ff; opacity: 0.72; side: double"
+        ></a-plane>
+        <a-plane
+          width="220"
+          height="220"
+          position="0 -35 0"
+          rotation="-90 0 0"
+          material="color: #9cc9ff; opacity: 0.72; side: double"
+        ></a-plane>
+      </a-entity>
 
       <a-plane
         class="tocable"
