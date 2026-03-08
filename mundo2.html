@@ -1,0 +1,121 @@
+<html>
+  <head>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+  <script src="https://agarci9inscastellet.github.io/scaperoom/js/scaperoom.js"> </script>
+  <script>
+      
+        AFRAME.registerComponent("mylink", {
+        init: function() {  
+         this.el.addEventListener("click", (e) => {              
+            window.location = this.data.href;      
+           })
+        }
+      })
+    </script>
+
+
+  </head>
+  <body>
+  <a-scene cursor="rayOrigin: mouse">
+
+    <a-assets>
+      <a-asset-item id="mundo-2" src="bikini.glb"></a-asset-item>
+      <a-asset-item id="bus1" src="bus1.glb"></a-asset-item>
+      <a-asset-item id="bus2" src="bus2.glb"></a-asset-item>
+      <a-asset-item id="flecha" src="flecha.glb"></a-asset-item>
+      <a-asset-item id="flecha2" src="flecha2.glb"></a-asset-item>
+      <a-asset-item id="estrella" src="patricio.glb"></a-asset-item>
+      <a-asset-item id="calamardinho" src="calamardo.glb"></a-asset-item>
+
+    </a-assets>
+
+<a-text 
+    value="CLICK AL BUS PARA VIAJAR"
+    position="-9.25831 20.53317 46.17747"
+    rotation="7.07087214970949 149.6989749650107 0.9373589528340268"
+    align="center"
+    color="#FF0000"
+    width="40" 
+    animation="property: position; 
+               dir: alternate; 
+               dur: 1500; 
+               easing: easeInOutSine; 
+               loop: true; 
+               to: -9.25831 11 46.17747"
+               look-at="[camera]"></a-text>
+
+<a-text 
+    value="CLICK AL BUS PARA VIAJAR"
+    position="2.69967 17.36307 -33.44805"
+    rotation="6.436607870499668 0.16558480279280793 -82.82735182190694"
+    align="center"
+    color="#FF0000"
+    width="40" 
+    animation="property: position; 
+               dir: alternate; 
+               dur: 1500; 
+               easing: easeInOutSine; 
+               loop: true; 
+               to: 2.69967 11 -33.44805"
+               look-at="[camera]"></a-text>
+
+      <a-entity gltf-model="bikini.glb" position="0 -2 0" scale="50 50 50" rotation="0 -260 0"></a-entity>
+
+      <a-entity gltf-model="bus1.glb" position="-9.25831 -1.93041 46.17747" scale="0.7 0.7 0.7" rotation="0 151.23507481375643 0" a-entity>
+
+      </a-entity>
+
+<a-entity gltf-model="bus2.glb" position="2.2377 -1.73282 -34.4593" scale="0.7 0.7 0.7" rotation="0 -38.6975694831358 0" a-entity="">
+      </a-entity>
+
+
+      <a-entity gltf-model=#estrella position="40 40 40" scale="5 5 5" rotation="0 -38.6975694831358 0" look-at="[camera]" a-entity="">
+        </a-entity>
+
+      <a-entity gltf-model=#calamardinho position="40 40 40" scale="50 50 50" rotation="0 -38.6975694831358 0" look-at="[camera]" a-entity="">
+        </a-entity>
+      
+<a-entity gltf-model="flecha2.glb" position="2.69967 3.36307 -33.44805" scale="0.007 0.007 0.007" rotation="6.436607870499668 0.16558480279280793 -82.82735182190694"
+   animation="property: position; 
+               dir: alternate; 
+               dur: 1500; 
+               easing: easeInOutSine; 
+               loop: true; 
+               to: 2.69967 7 -33.44805">></a-entity>
+
+    </a-entity>
+
+      <a-entity 
+    gltf-model="flecha.glb"
+    position="-9.25831 3.53317 46.17747"
+    scale="0.0070 0.0070 0.0070"
+    rotation="6.436607870499668 66.34736676055907 -82.82735182190694"
+    
+    
+    animation="property: position; 
+               dir: alternate; 
+               dur: 1500;   
+               easing: easeInOutSine; 
+               loop: true; 
+               to: -9.25831 7.53317 46.17747">
+    </a-entity> 
+    
+<a-plane src="cr7.png" position="-5.0425 7.33306 -19.13096" rotation="0 21.837140445821067 0" width="50" height="50" material="side: double" static-body="">
+</a-plane>
+
+</html>
+<a-plane src="cr7.png" position="-19.89427 6.24474 -25.81651" rotation="0 84.62013676287128 0" width="50" height="50" material="side: double" static-body="sphereRadius: NaN" geometry="">
+</a-plane>
+<a-plane src="cr7.png" position="-19.89427 6.24474 -25.81651" rotation="0 84.62013676287128 0" width="50" height="50" material="side: double" static-body="sphereRadius: NaN" geometry="">
+</a-plane>
+<a-plane src="cr7.png" position="3.64423 15.60414 -36.67158" rotation="0 151.1691846673164 0" width="50" height="50" material="side: double" static-body="sphereRadius: NaN" geometry="">
+<a-plane src="cr7.png" position="8.76761 -1.60719 9.54554" rotation="-87.17037190899858 -15.742015421219367 27.20690090178714" width="50" height="50" material="side: double" static-body="sphereRadius: NaN" geometry="">
+</a-plane>
+<a-plane src="cr7.png" position="-9.98196 -17.71645 -32.97429" rotation="-87.17037190899858 -15.742015421219367 27.20690090178714" width="50" height="50" material="side: double" static-body="sphereRadius: NaN" geometry="">
+</a-plane>
+
+</a-plane>
+</a-plane></a-plane>
+</a-plane>
