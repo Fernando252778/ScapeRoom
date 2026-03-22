@@ -1,30 +1,248 @@
-<html>
-  <head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    
-    <script>
-        AFRAME.registerComponent("mylink", {
-        init: function() {  
-         this.el.addEventListener("click", (e) => {              
-            window.location = this.data.href;      
-           })
-        }
-      })
-    </script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mundo-1</title>
 
+<!-- Librerías -->
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+<script src="https://agarci9inscastellet.github.io/scaperoom/js/scaperoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
 
-  </head>
-  <body>
-  <a-scene cursor="rayOrigin: mouse">
-<a-entity camera="" position="10.49036 45.70751 -7.98091" wasd-controls="" rotation="2.521014298575611 86.74581018280671 0" look-controls="" aframe-injected="" data-aframe-inspector-original-camera=""></a-entity>
-    <a-assets>
-      <a-asset-item id="patriciocasa" src="escenarios/casacalamardinhoo.glb"></a-asset-item>
-      <a-asset-item id="calamardo" src="personajes/calamardo.glb"></a-asset-item>
-      <a-asset-item id="clarinete" src="items/clarinete.glb"></a-asset-item>
-    </a-assets>
+<script>
+AFRAME.registerComponent("mylink", {
+  init: function() {  
+    this.el.addEventListener("click", () => {              
+      window.location = this.data.href;      
+    })
+  }
+})
+</script>
+</head>
+
+<body>
+
+<a-scene cursor="rayOrigin: mouse" raycaster="objects: .aframe-clickable">
+
+  <!-- JUGADOR (RIG + CÁMARA + SENSOR) -->
+ <a-entity id="rig" position="0 0 0"
+  wasd-controls="acceleration: 175"
+  look-controls>
+
+  <a-entity 
+    camera 
+    position="0 2.5 0">
+  </a-entity>
+
+  <a-entity id="sensor"
+    position="0 1 -1"
+    raycaster="objects: .paret; far:4; showLine:false">
+  </a-entity>
+
+</a-entity>
+
+  </a-entity>
+
+  <!-- Assets -->
+  <a-assets>
+    <a-asset-item id="Balde" src="Escenarios/Balde-carnada.glb"></a-asset-item>
+    <a-asset-item id="plak" src="Personajes/plakton.glb"></a-asset-item>     
+    <a-asset-item id="Karen" src="Personajes/karen.glb"></a-asset-item>
+    <a-asset-item id="disco-1" src="items/Disco.glb"></a-asset-item>
+    <a-asset-item id="toca-discos-1" src="Cosas/Toca-disco.glb"></a-asset-item> 
+  </a-assets>
+
+  <!-- Escenario -->
+  <a-entity gltf-model="#Balde" position="-6 -8.963 7" scale="1 1 1"></a-entity>
+
+  <!-- Personajes -->
+  <a-entity id="plakton" gltf-model="#plak" position="-34.07683 -1.30848 7.13294" scale="4.31989 3.63528 4.52615" rotation="0 89.5659 0" class="aframe-clickable"></a-entity>
   
-      <a-entity gltf-model="#patriciocasa" position="0 30 0" scale="1 1 1" rotation="0 0 0"></a-entity>
-      <a-entity gltf-model="#calamardo" position="-13.76761 30.44846 -17.14539" scale="5 5 5" rotation="0 70.82445897171132 0"></a-entity>
-      <a-entity gltf-model="#clarinete" position="-3.43138 58.70865 48.54859" scale="0.01 0.01 0.01" rotation="0 70.82445897171132 0"></a-entity>
-  </body>
+  <a-entity gltf-model="#Karen" position="-34.6308 -8.67408 1.16787" scale="3.01309 2.38193 2.29185" rotation="0 64.75 0"></a-entity>
+
+  <!-- Disco -->
+  <a-entity id="disco" gltf-model="#disco-1"
+    position="-52.56193 2.37275 51.92599"
+    scale="18.29 15.59 6.25"
+    rotation="0 329.472 0"
+    animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear"
+    class="aframe-clickable">
+  </a-entity>
+
+  <!-- Toca discos -->
+  <a-entity id="toca-discos"
+    gltf-model="#toca-discos-1"
+    position="-54.21916 -1.75364 -35.62267"
+    scale="3.97 1.70 4.46"
+    rotation="0 88.20 0"
+    class="aframe-clickable">
+  </a-entity>
+
+  </a-plane>
+
+<a-plane class="paret" position="-5 7 85.79775" width="200" height="50" color="blue" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="32.61989 7 -4.446" width="200" height="50" color="blue" rotation="180 -89 180" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="6.2304 7 -75.84765" width="200" height="50" color="blue" rotation="" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="-85.89405 7 -4.446" width="200" height="50" color="blue" rotation="180 -89 180" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="4 6.39 84.88519" width="30" height="30" color="green" material="side: double; opacity: 0" geometry=""> </a-plane>   <!-- pared puerta -->
+<a-plane class="paret" position="-60.57333 7 -15.29643" width="30" height="30" color="blue" material="side: double; opacity: 0" geometry=""> </a-plane>
+<a-plane class="paret" position="-47.99747 7 -113.88998" width="200" height="50" color="blue" rotation="180 -89 180" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="-71.89748 7 16.66335" width="200" height="50" color="blue" rotation="180 -89 180" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="-65.33225 7 -4.00024" width="70" height="50" color="blue" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="-30.83868 7 12" width="33" height="50" color="blue" rotation="0 89 0" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="-55.6981 7 27.79616" width="50" height="50" color="blue" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="-47.62102 7 59.4231" width="65" height="50" color="blue" rotation="0 89 0" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="3.77709 5.75165 -75.73193" width="30" height="30" color="green" material="side: double; opacity: 0" geometry=""> </a-plane> <!-- pared puerta -->
+</a-plane>
+
+
+  <!-- Sonido -->
+  <a-entity id="sound" sound></a-entity>
+
+  <!-- Luz -->
+  <a-light type="ambient" color="#ffffff" intensity="1"></a-light>
+
+</a-scene>
+
+<!-- SCRIPT DEL JUEGO -->
+<script>
+
+// ESTADOS
+let hasTalkedWithPlakton = false;
+let hasPickedUpDisco = false;
+let hasPlayedMusic = false;
+
+const plakton = document.querySelector('#plakton');
+const disco = document.querySelector('#disco');
+const tocaDiscos = document.querySelector('#toca-discos');
+const sound = document.querySelector('#sound');
+
+// AUDIO
+function playAudio() {
+  const ruta = "Audio/Cancion.mp3"; 
+
+  if (sound.components.sound && sound.components.sound.isPlaying) {
+    sound.components.sound.stopSound();
+  }
+
+  sound.setAttribute('sound', `src: ${ruta}`);
+  sound.components.sound.playSound();
+
+  hasPlayedMusic = true;
+
+  alert("Has puesto el disco, vuelve a darle clic para reproducir la música.");
+}
+
+// HABLAR PLAKTON
+AFRAME.registerComponent('hablar-plakton', {
+  init: function() {
+    this.el.addEventListener('click', () => {
+
+      if (!hasTalkedWithPlakton) {
+        alert("Plakton: Busca la forma de reproducir música.");
+        hasTalkedWithPlakton = true;
+
+      } else if (hasPlayedMusic) {
+        alert("Plakton: ¡Misión completada!");
+
+      } else {
+        alert("Hasta que no reproduzcas música, no me hables.");
+      }
+
+    });
+  }
+});
+
+// RECOGER DISCO
+AFRAME.registerComponent('poner-disco', {
+  init: function() {
+    this.el.addEventListener('click', () => {
+
+      if (!hasTalkedWithPlakton) {
+        alert("Debes hablar con Plakton primero.");
+        return;
+      }
+
+      if (!hasPickedUpDisco) {
+        hasPickedUpDisco = true;
+        this.el.setAttribute('visible', false);
+        alert("¡Has recogido el disco!");
+      }
+
+    });
+  }
+});
+
+// USAR TOCADISCOS
+AFRAME.registerComponent('usar-toca-discos', {
+  init: function() {
+    this.el.addEventListener('click', () => {
+
+      if (!hasTalkedWithPlakton) {
+        alert("Debes hablar con Plakton primero.");
+        return;
+      }
+
+      if (!hasPickedUpDisco) {
+        alert("Te falta algo.");
+        return;
+      }
+
+      if (!hasPlayedMusic) {
+        playAudio();
+      }
+
+    });
+  }
+});
+
+// ASIGNAR COMPONENTES
+plakton.setAttribute('hablar-plakton', '');
+disco.setAttribute('poner-disco', '');
+tocaDiscos.setAttribute('usar-toca-discos', '');
+
+
+// =====================
+// COLISIONES
+// =====================
+
+const rig = document.querySelector('#rig');
+const sensor = document.querySelector('#sensor');
+
+let lastValidPosition = new THREE.Vector3();
+
+AFRAME.registerComponent('col-check',{
+  tick:function(){
+
+    const raycaster = sensor.components.raycaster;
+    const currentPosition = rig.object3D.position;
+
+    const movementDirection = new THREE.Vector3()
+      .copy(currentPosition)
+      .sub(lastValidPosition)
+      .normalize();
+
+    if(movementDirection.length()>0){
+
+      sensor.setAttribute('raycaster','direction',movementDirection);
+
+      if(raycaster.intersections.length>0){
+        rig.object3D.position.copy(lastValidPosition);
+      }else{
+        lastValidPosition.copy(currentPosition);
+      }
+
+    }else{
+      lastValidPosition.copy(currentPosition);
+    }
+
+  }
+});
+
+// ACTIVAR COLISIONES
+document.querySelector('a-scene').setAttribute('col-check','');
+
+</script>
+
+</body>
 </html>
