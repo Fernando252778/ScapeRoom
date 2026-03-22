@@ -1,43 +1,159 @@
-<html>
-  <head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script>
-        AFRAME.registerComponent("mylink", {
-        init: function() {  
-         this.el.addEventListener("click", (e) => {              
-            window.location = this.data.href;      
-           })
-        }
-      })
-    </script>
-  </head>
-  
-  <body>
-  <a-scene cursor="rayOrigin: mouse">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mundo-4</title>
+  <!-- Librerías -->
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.0/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
+  <script src="https://agarci9inscastellet.github.io/scaperoom/js/scaperoom.js"></script>
+</head>
 
-    <!--A-ssets-->
-    <a-assets>
-    <a-asset-item id="Casa" src="Escenarios/Casa-de-bob-esponja.glb"></a-asset-item>
-    </a-assets>
-  
-    <!--A-entity-->
-    <a-entity gltf-model=#Casa position="603.76581 -19.36935 297.44139" scale="1 1 1"></a-entity>
+<body>
+<a-scene cursor="rayOrigin: mouse" raycaster="objects: .aframe-clickable">
 
+  <!-- Rig con cámara y colisión -->
+  <a-entity id="rig" position="0 40 0" 
+            wasd-controls="acceleration: 80" 
+            look-controls>
     
-  
-  <!--Movimiento de la camara-->
-     <!--El wasd-controls es lo que nos ayuda a definir velocidad de la camara-->
-      <a-entity 
-        camera 
-        position="0 1.6 0"
-        wasd-controls="acceleration: 175" 
-        look-controls>
-      </a-entity> 
+    <a-entity camera position="0 2.5 0"></a-entity>
+    
+    <!-- Sensor para colisión -->
+    <a-entity id="sensor" 
+              position="0 1 0"
+              raycaster="objects: .paret; far:10; showLine:false">
+    </a-entity>
+  </a-entity>
 
-    <!--Luz de la esena-->>
-    <a-entity light="type: ambient; color: #ffffff; intensity: 1.5"></a-entity>
+  <!-- Assets -->
+  <a-assets>
+    <a-asset-item id="calamardo-casa" src="escenarios/casacalamardinhoo.glb"></a-asset-item>
+    <a-asset-item id="calamardo-model" src="personajes/calamardo.glb"></a-asset-item>
+    <a-asset-item id="clarinete-1" src="items/clarinete.glb"></a-asset-item>
+    <a-asset-item id="gary-model" src="personajes/gary.glb"></a-asset-item>
+  </a-assets>
 
-<a-plane src="Cosas/techo.jpg" position="7.7507 8.93493 5.7738" rotation="89.0519653082082 0 0" width="100" height="100" material="side: double" geometry=""></a-plane>
-  </body>
+  <!-- Escenario y personajes -->
+  <a-entity gltf-model="#calamardo-casa" position="0 30 0"></a-entity>
+  <a-entity id="calamardo" gltf-model="#calamardo-model" position="-13.76761 30.44846 -17.14539" scale="5 5 5" rotation="0 70 0" class="aframe-clickable" hablar-calamardo></a-entity>
+  <a-entity id="clarinete" gltf-model="#clarinete-1" position="6.99876 58.77603 48.57484" scale="0.01 0.01 0.01" rotation="0 146 0"></a-entity>
+  <a-entity id="gary" gltf-model="#gary-model" position="-10 30 -10" scale="2 2 2" visible="false"></a-entity>
+
+  <!-- Planos invisibles para colisión -->
+  <a-plane class="paret" position="0 0 10" width="50" height="50" material="opacity:0; side:double"></a-plane>
+  <a-plane class="paret" position="0 0 -10" width="50" height="50" material="opacity:0; side:double"></a-plane>
+  <a-plane class="paret" position="10 0 0" rotation="0 90 0" width="50" height="50" material="opacity:0; side:double"></a-plane>
+  <a-plane class="paret" position="-10 0 0" rotation="0 90 0" width="50" height="50" material="opacity:0; side:double"></a-plane>
+  <a-plane class="paret" position="0 0 0" rotation="0 21 0" width="50" height="50" material="side:double; opacity:100"></a-plane>
+<a-plane class="paret" position="0 53.53163 43.72303" rotation="0 -1.18315784694515 0" width="120" height="50" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="46.08629 53.53163 -12.61509" rotation="0 89.83118790958612 0" width="120" height="50" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="-55.07285 51.39933 16.01008" rotation="0.32658594322456924 84.98912158293554 0.08422479588423101" width="50" height="50" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="-48.85036 54.3685 3.55361" rotation="0 69.40982617553333 0" width="50" height="50" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="-29.12955 57.36867 -25.7359" rotation="0 46.30874083365365 0" width="50" height="50" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="0 52.89136 -49.98404" rotation="0 21 0" width="50" height="50" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane class="paret" position="23.87372 55.89913 -56.50477" rotation="0 3.8823620198064583 0" width="50" height="50" material="side: double; opacity: 0" geometry=""></a-plane>
+<a-plane id="portal" class="paret" position="21.5342 43.67192 41.50927" rotation="-0.5328507494716656 -1.3338457470645564 1.627200138171538" width="20" height="25" material="side: double; opacity: 100" mylink="href: https://fernando252778.github.io/ScapeRoom/mundo2.html"; geometry=""></a-plane>
+
+</a-scene>
+
+<!-- Scripts de la misión -->
+<script>
+  // Estado global de la misión
+  let mission = { hablado: false, tieneClarinete: false, entregado: false };
+
+  // Hablar con Calamardo
+  AFRAME.registerComponent('hablar-calamardo', {
+    init: function() {
+      this.el.addEventListener('click', () => {
+        if (!mission.hablado) {
+          alert("Calamardo: Que haces en mi casa Bob esponja?? bueno no importa mejor ayudame a buscar mi clarinete.");
+          mission.hablado = true;
+          document.querySelector('#clarinete').classList.add('aframe-clickable');
+          return;
+        }
+        if (!mission.tieneClarinete) { alert("Calamardo: ¡Que esperas busca mi clarinete!"); return; }
+        if (!mission.entregado) {
+          alert("Le entreguas el clarinete a Calamardo...");
+          alert("Calamardo: Gracias por nada y llevate a tu mascota de aqui.");
+          mission.entregado = true;
+          const gary = document.querySelector('#gary');
+          gary.setAttribute('visible', true);
+          gary.classList.add('aframe-clickable');
+          gary.setAttribute('poner-gary', '');
+          return;
+        }
+        alert("Calamardo: Cuida bien de Gary.");
+      });
+    }
+  });
+
+  // Recoger clarinete
+  AFRAME.registerComponent('poner-clarinete', {
+    init: function() {
+      this.el.addEventListener('click', () => {
+        if (!mission.hablado) { alert("No puedes coger esto si Calamardo se entera."); return; }
+        if (!mission.tieneClarinete) { mission.tieneClarinete = true; this.el.setAttribute('visible', false); alert("¡Has recogido el clarinete!"); }
+      });
+    }
+  });
+
+  // Recoger Gary
+  AFRAME.registerComponent('poner-gary', {
+    init: function() {
+      this.el.addEventListener('click', () => {
+        if (mission.entregado) {
+          alert("¡Has recogido a Gary!");
+          catchableObject('#gary','status_gary','(🐌)');
+          this.el.setAttribute('visible', false);
+          this.el.classList.remove('aframe-clickable');
+        }
+      });
+    }
+  });
+
+  // Colisiones
+  const rig = document.querySelector('#rig');
+  const sensor = document.querySelector('#sensor');
+  let lastValidPosition = new THREE.Vector3();
+
+  AFRAME.registerComponent('col-check',{
+    tick:function(){
+      const raycaster = sensor.components.raycaster;
+      const currentPosition = rig.object3D.position;
+      const movementDirection = new THREE.Vector3()
+        .copy(currentPosition)
+        .sub(lastValidPosition)
+        .normalize();
+
+      if(movementDirection.length()>0){
+        sensor.setAttribute('raycaster','direction',movementDirection);
+        if(raycaster.intersections.length>0){
+          rig.object3D.position.copy(lastValidPosition);
+        }else{
+          lastValidPosition.copy(currentPosition);
+        }
+      } else {
+        lastValidPosition.copy(currentPosition);
+      }
+    }
+  });
+
+AFRAME.registerComponent('autotp', {
+  init: function () {
+    this.el.addEventListener('mouseenter', () => {
+      window.location.href = "https://fernando252778.github.io/ScapeRoom/mundo2.html";
+    });
+  }
+});
+
+document.querySelector('#portal').setAttribute('autotp', '');
+
+  document.querySelector('a-scene').setAttribute('col-check','');
+
+  // Asignar componentes
+  document.querySelector('#clarinete').setAttribute('poner-clarinete','');
+</script>
+</body>
 </html>
-
