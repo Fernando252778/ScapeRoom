@@ -239,9 +239,14 @@ AFRAME.registerComponent('col-check',{
   }
 });
 
-document.querySelector("#portal").addEventListener("click", function () {
-    window.location.href = "https://fernando252778.github.io/ScapeRoom/mundo2.html";
-});
+//Scrip para pasar a otros mundos
+        AFRAME.registerComponent("mylink", {
+        init: function() {  
+         this.el.addEventListener("click", (e) => {              
+            window.location = this.data.href;      
+           })
+        }
+      })
 // ACTIVAR COLISIONES
 document.querySelector('a-scene').setAttribute('col-check','');
 
