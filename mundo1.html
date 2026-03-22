@@ -135,24 +135,20 @@ function playAudio() {
 }
 
 // HABLAR PLAKTON
-AFRAME.registerComponent('hablar-plakton', {
-  init: function() {
-    this.el.addEventListener('click', () => {
-
-      if (!hasTalkedWithPlakton) {
-        alert("Plakton: Busca la forma de reproducir música.");
-        hasTalkedWithPlakton = true;
-
-      } else if (hasPlayedMusic) {
-        alert("Plakton: ¡Misión completada!");
-
-      } else {
-        alert("Hasta que no reproduzcas música, no me hables.");
-      }
-
-    });
-  }
-});
+  AFRAME.registerComponent('hablar-plakton', {
+    init: function() {
+      this.el.addEventListener('click', () => {
+        if (!hasTalkedWithPlakton) {
+          alert("Plakton: Por fin, mi invento malvado ya está completado ahora, para probar tu nivel de IA, tu primera misión es reproducir música; busca la manera de reproducir música con el tocadiscos.");
+          hasTalkedWithPlakton = true;
+        } else if (hasPlayedMusic) {
+          alert("Plakton: Bien hecho mi creación, ahora ve a la casa de calamardo y roba la llave de crustáceo cascarudo");
+        } else {
+          alert("Hasta que no reproduzcas música, no me hables.");
+        }
+      });
+    }
+  });
 
 // RECOGER DISCO
 AFRAME.registerComponent('poner-disco', {
