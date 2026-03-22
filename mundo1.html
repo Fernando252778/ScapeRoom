@@ -54,8 +54,6 @@ AFRAME.registerComponent("mylink", {
 
     <!-- Assets -->
 
-  <button class="btn btn-play" onclick="window.location.href='mundo2.html'">
-
   <!-- Escenario -->
   <a-entity gltf-model="#Balde" position="-6 -8.963 7" scale="1 1 1"></a-entity>
 
@@ -88,7 +86,7 @@ AFRAME.registerComponent("mylink", {
 <a-plane class="paret" position="32.61989 7 -4.446" width="200" height="50" color="blue" rotation="180 -89 180" material="side: double; opacity: 0" geometry=""></a-plane>
 <a-plane class="paret" position="6.2304 7 -75.84765" width="200" height="50" color="blue" rotation="" material="side: double; opacity: 0" geometry=""></a-plane>
 <a-plane class="paret" position="-85.89405 7 -4.446" width="200" height="50" color="blue" rotation="180 -89 180" material="side: double; opacity: 0" geometry=""></a-plane>
-<a-plane id="portal" class="paret" position="4 6.39 84.88519" width="30" height="30" color="green" material="side: double; opacity: 0" mylink="href: https://fernando252778.github.io/ScapeRoom/mundo2.html; geometry=""> </a-plane>   <!-- pared puerta -->
+<a-plane id="portal" class="paret" position="4 6.39 84.88519" width="30" height="30" color="green" material="side: double; opacity: 0" mylink="href: https://fernando252778.github.io/ScapeRoom/mundo2.html"; geometry=""> </a-plane>   <!-- pared puerta -->
 <a-plane class="paret" position="-60.57333 7 -15.29643" width="30" height="30" color="blue" material="side: double; opacity: 0" geometry=""> </a-plane>
 <a-plane class="paret" position="-47.99747 7 -113.88998" width="200" height="50" color="blue" rotation="180 -89 180" material="side: double; opacity: 0" geometry=""></a-plane>
 <a-plane class="paret" position="-71.89748 7 16.66335" width="200" height="50" color="blue" rotation="180 -89 180" material="side: double; opacity: 0" geometry=""></a-plane>
@@ -96,7 +94,7 @@ AFRAME.registerComponent("mylink", {
 <a-plane class="paret" position="-30.83868 7 12" width="33" height="50" color="blue" rotation="0 89 0" material="side: double; opacity: 0" geometry=""></a-plane>
 <a-plane class="paret" position="-55.6981 7 27.79616" width="50" height="50" color="blue" material="side: double; opacity: 0" geometry=""></a-plane>
 <a-plane class="paret" position="-47.62102 7 59.4231" width="65" height="50" color="blue" rotation="0 89 0" material="side: double; opacity: 0" geometry=""></a-plane>
-<a-plane class="btn btn-play" class="paret" position="3.77709 5.75165 -75.73193" width="30" height="30" color="green" material="side: double; opacity: 0" mylink="href: https://fernando252778.github.io/ScapeRoom/mundo2.html" geometry=""> </a-plane> <!-- pared puerta -->
+<a-plane class="paret" position="3.77709 5.75165 -75.73193" width="30" height="30" color="green" material="side: double; opacity: 0" mylink="href: https://fernando252778.github.io/ScapeRoom/mundo2.html"; geometry=""> </a-plane> <!-- pared puerta -->
 </a-plane>
 
 
@@ -243,14 +241,6 @@ AFRAME.registerComponent('col-check',{
   }
 });
 
-//Scrip para pasar a otros mundos
-        AFRAME.registerComponent("mylink", {
-        init: function() {  
-         this.el.addEventListener("click", (e) => {              
-            window.location = this.data.href;      
-           })
-        }
-      })
 // ACTIVAR COLISIONES
 document.querySelector('a-scene').setAttribute('col-check','');
 
