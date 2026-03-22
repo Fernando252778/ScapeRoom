@@ -34,6 +34,30 @@ position="0 0 0">
   id="user-camera"
   position="0 3 0"
   look-controls>
+  
+<a-entity position="1.55 0.77 -1">
+
+  <!-- BOTÓN -->
+  <a-plane 
+    id="teleport6"
+    class="aframe-clickable"
+    width="0.4"
+    height="0.1"
+    color="red">
+  </a-plane>
+
+  <!-- TEXTO -->
+  <a-text
+    value="Volver al inicio"
+    position="0 0 0.003"
+    align="center"
+    color="white"
+    width="1">
+  </a-text>
+
+</a-entity>
+
+</a-entity>
 
     <a-entity id="sensor"
     raycaster="objects: .paret; far:4; showLine:false">
@@ -42,6 +66,9 @@ position="0 0 0">
   </a-entity>
 
 </a-entity>
+
+
+<!-- ASSETS -->
 
 <a-assets>
 
@@ -68,7 +95,7 @@ look-at="[camera]"
 animation="property: position; dir: alternate; dur:1500; easing:easeInOutSine; loop:true; to:-9.25831 11 46.17747">
 </a-text>
 
-<!-- TEXTO 2 BUS   2 -->
+<!-- TEXTO 2 BUS  2 -->
 <a-text
 id="texto2"
 value="CLICK AL BUS PARA VIAJAR"
@@ -324,6 +351,15 @@ teleport5.addEventListener("click", () => {
     mover5.setAttribute("position", destino5);
 });
 
+const mover6 = document.querySelector("#rig");
+const teleport6 = document.querySelector("#teleport6");
+
+// Posición 6 a la que quieres teletransportarte
+const destino6 = { x: -5.4875, y: -3, z: 28.61871};
+
+teleport6.addEventListener("click", () => {
+    mover6.setAttribute("position", destino6);
+});
 
 
 // MOVIMIENTO DEL BUS 1 AL TOCARLO
