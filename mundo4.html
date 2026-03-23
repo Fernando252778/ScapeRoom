@@ -1,29 +1,195 @@
-<html>
-  <head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script>
-        AFRAME.registerComponent("mylink", {
-        init: function() {  
-         this.el.addEventListener("click", (e) => {              
-            window.location = this.data.href;      
-           })
-        }
-      })
-    </script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mundo-3</title>
 
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
 
-  </head>
-  <body>
-  <a-scene cursor="rayOrigin: mouse">
-<a-entity camera="" position="10.49036 45.70751 -7.98091" wasd-controls="" rotation="2.521014298575611 86.74581018280671 0" look-controls="" aframe-injected="" data-aframe-inspector-original-camera=""></a-entity>
-    <a-assets>
-      <a-asset-item id="patriciocasa" src="casacalamardinhoo.glb"></a-asset-item>
-      <a-asset-item id="calamardo" src="calamardo.glb"></a-asset-item>
-      <a-asset-item id="clarinete" src="clarinete.glb"></a-asset-item>
-    </a-assets>
+<body>
+<a-scene cursor="rayOrigin: mouse" raycaster="objects: .aframe-clickable">
   
-      <a-entity gltf-model="#patriciocasa" position="0 30 0" scale="1 1 1" rotation="0 0 0"></a-entity>
-      <a-entity gltf-model="#calamardo" position="-13.76761 30.44846 -17.14539" scale="5 5 5" rotation="0 70.82445897171132 0"></a-entity>
-<a-entity gltf-model="clarinete.glb" position="-3.43138 58.70865 48.54859" scale="0.01 0.01 0.01" rotation="0 70.82445897171132 0"></a-entity>
-  </body>
+
+  <!-- 🔥 RIG + CÁMARA (ARREGLADO) -->
+  <a-entity id="rig" position="-5.11 0 54.63" wasd-controls="acceleration: 40" look-controls>
+
+    <a-entity camera position="0 1.6 0"></a-entity>
+
+    <a-entity id="sensor"
+      position="0 1 0"
+      raycaster="objects: .paret; far:6; showLine:false">
+    </a-entity>
+
+  </a-entity>
+
+  <!-- Assets -->
+  <a-assets>
+    <a-asset-item id="Casa" src="escenarios/casabobesponja.glb"></a-asset-item>
+    <a-asset-item id="Cuadro" src="cosas/Cuadro-de-calamardo.glb"></a-asset-item>
+    <a-asset-item id="neverra" src="cosas/neverra.glb"></a-asset-item>
+    <a-asset-item id="bowl" src="cosas/Bowl.glb"></a-asset-item>
+    <a-asset-item id="comida" src="items/lata_de_comida.glb"></a-asset-item>
+    <a-asset-item id="gary" src="personajes/gary.glb"></a-asset-item>
+    <a-asset-item id="key" src="items/key.glb"></a-asset-item>
+  </a-assets>
+
+  <!-- Escenario y objetos -->
+  <a-entity gltf-model="#Casa" position="0 -6.584 0" rotation="0 -260 0"></a-entity>
+  <a-entity gltf-model="#Cuadro" position="10.75 4.78 42.64" scale="2.65 1.65 1" rotation="0 -260 0"></a-entity>
+  <a-entity gltf-model="#neverra" position="12.71 -7.14 20.18" scale="9.15 10.70 9.03" rotation="0 100.57 0"></a-entity>
+  <a-entity gltf-model="#bowl" position="-2.08048 -4.40334 43.98327" scale="3.91 3.75 4.12" rotation="0 -260 0"></a-entity>
+
+  <a-entity id="key" gltf-model="#key" position="-15.44 -3.86 44.27" scale="1.05 0.64 0.99" rotation="0 -163.56 0" recoger-llave class="aframe-clickable"></a-entity>
+
+  <a-entity id="comida" gltf-model="#comida" position="30.99 0.01 28.18" scale="11.55 10.30 11.28" rotation="0 -260 0" recoger-comida class="aframe-clickable"></a-entity>
+
+  <a-entity id="gary" gltf-model="#gary" position="-15.44 -3.86 44.27" scale="1.05 0.64 0.99" rotation="0 -163.56 0" interactuar-gary class="aframe-clickable"></a-entity>
+
+  <a-plane src="cosas/Suelo.jpg" position="12.73 -4.74 35.12" rotation="89 0 0" width="100" height="100" material="side: double"></a-plane>
+
+
+<a-plane class="paret" position="0 0 0" width="40" height="2" color="blue" rotation="0 65.135 0" material="opacity: 0; side: double" scale="1.342 6.057 1"></a-plane>
+<a-plane class="paret" position="-0.2515 0 67.03265" width="40" height="2" color="blue" rotation="0 175.45801151850227 0" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane class="paret" position="-21.08568 1.94641 53.72907" width="40" height="2" color="blue" rotation="0 148.44477035146934 0" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane class="paret" position="-19.97933 0 49.90103" width="40" height="2" color="blue" rotation="0 104.73840382329988 0" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane class="paret" position="-22.57541 0 37.91518" width="40" height="2" color="blue" rotation="0 81.67971735825991 0" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane class="paret" position="-7.59982 0 26.83159" width="40" height="2" color="blue" rotation="0 -175.28784305334838 0" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane class="paret" position="15.70239 0 62.9156" width="40" height="2" color="blue" rotation="0 -80.5441150083106 0" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane class="paret" position="5 0 0" width="4" height="2" color="blue" rotation="0 65.135 0" material="opacity: 0; side: double" scale="1.342 6.057 1"></a-plane>
+<a-plane id="teleport1" class="paret aframe-clickable" position="10.20172 0 31.15515" width="8" height="2" color="blue" rotation="0 100.31803443386558 0" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane id="teleport2" class="paret aframe-clickable" position="12.20172 0 31.15515" width="8" height="2" color="blue" rotation="0 100.31803443386558 0" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane id="portal" class="paret aframe-clickable" position="7.17799 0 66.84153" width="8" height="2" color="blue" rotation="0 174.51950665007797 0" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane class="paret" position="38.18853 0 33.20342" width="40" height="2" color="blue" rotation="0 -168.8191495463214 0" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane class="paret" position="6.47713 0 0.3598" width="40" height="2" color="blue" rotation="-0.1529797312999298 98.8610027608479 -0.11058085446024889" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane class="paret" position="37.09092 0 9.24316" width="40" height="2" color="blue" rotation="-0.1529797312999298 98.8610027608479 -0.11058085446024889" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+<a-plane class="paret" position="30.32997 0 13.71106" width="40" height="2" color="blue" rotation="-0.1529797312999298 140.34200121272923 -0.11058085446024889" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane> 
+<a-plane class="paret" position="10.88439 0 4.69859" width="40" height="2" color="blue" rotation="0 165.55042532510006 0" material="opacity: 0; side: double" scale="1.342 6.057 1" geometry=""></a-plane>
+</a-scene>
+
+<script>
+
+// =====================
+// GAMEPLAY (SIN CAMBIOS)
+// =====================
+
+let tieneComida = false;
+let garyMovido = false;
+
+AFRAME.registerComponent('recoger-comida', {
+  init: function() {
+    this.el.addEventListener('click', () => {
+      if (!tieneComida) {
+        tieneComida = true;
+        this.el.setAttribute('visible', false);
+        alert("¡Has recogido la comida de Gary!");
+      }
+    });
+  }
+});
+
+AFRAME.registerComponent('interactuar-gary', {
+  init: function() {
+    this.el.addEventListener('click', () => {
+      if (!tieneComida) {
+        alert("Gary esta hambriento dale de comer, busca algo de comida en la cocina.");
+        return;
+      }
+      if (!garyMovido) {
+        garyMovido = true;
+        alert("Gary huele la comida y va a comer...");
+        this.el.setAttribute('animation__mover', {
+          property: 'position',
+          to: '-4.24 -4.21 42.39',
+          dur: 3000,
+          easing: 'linear'
+        });
+        this.el.removeAttribute('interactuar-gary');
+      }
+    });
+  }
+});
+
+AFRAME.registerComponent('recoger-llave', {
+  init: function() {
+    this.el.addEventListener('click', () => {
+      if (!garyMovido) {
+        alert("Espera a que Gary vaya a su comida si no pensara que se la vas a quitar y te mordera");
+        return;
+      }
+      this.el.setAttribute('visible', false);
+      alert("¡Has recogido la llave del Crustáceo Cascarudo! dirijete al Crustáceo Cascarudo para robar la fórmula secreta y completar la misión");
+    });
+  }
+});
+
+// =====================
+// COLISIONES (TU SISTEMA)
+// =====================
+
+const rig = document.querySelector('#rig');
+const sensor = document.querySelector('#sensor');
+
+let lastValidPosition = new THREE.Vector3();
+
+AFRAME.registerComponent('col-check',{
+  tick:function(){
+    const raycaster = sensor.components.raycaster;
+    const currentPosition = rig.object3D.position;
+
+    const movementDirection = new THREE.Vector3()
+      .copy(currentPosition)
+      .sub(lastValidPosition)
+      .normalize();
+
+    if(movementDirection.length()>0){
+      sensor.setAttribute('raycaster','direction',movementDirection);
+
+      if(raycaster.intersections.length>0){
+        rig.object3D.position.copy(lastValidPosition);
+      }else{
+        lastValidPosition.copy(currentPosition);
+      }
+    } else {
+      lastValidPosition.copy(currentPosition);
+    }
+  }
+});
+
+const mover1 = document.querySelector("#rig");
+const teleport1 = document.querySelector("#teleport1");
+
+// Posición 1 a la que quieres teletransportarte 
+const destino1 = { x: 17.20172, y: 0, z: 31.15515};
+
+teleport1.addEventListener("click", () => {
+    mover1.setAttribute("position", destino1);
+});
+
+const mover2 = document.querySelector("#rig");
+const teleport2 = document.querySelector("#teleport2");
+
+// Posición 2 a la que quieres teletransportarte 
+const destino2 = { x: -11, y: 0, z: 45};
+
+teleport2.addEventListener("click", () => {
+    mover2.setAttribute("position", destino2);
+});
+
+AFRAME.registerComponent('autotp', {
+  init: function () {
+    this.el.addEventListener('click', () => {
+      window.location.href = "https://fernando252778.github.io/ScapeRoom/mundo2.html";
+    });
+  }
+});
+
+document.querySelector('#portal').setAttribute('autotp', '');
+
+// ACTIVAR COLISIONES
+document.querySelector('a-scene').setAttribute('col-check','');
+
+</script>
+
+</body>
 </html>
