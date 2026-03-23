@@ -221,7 +221,7 @@ animation="property: scale; dur: 1000;  to: 0.050 0.050 0.050; dir: alternate;  
 <a-plane class="paret" position="-13.66037 -0.474 -38.72028" width="4" height="2" color="blue" rotation="0 65.135 0" material="opacity: 0; side: double" scale="1.342 6.057 1"></a-plane>
 <a-plane class="paret" position="-12.12167 -0.474 -36.08848" width="4" height="2" color="blue" material="opacity: 0; side: double" rotation="0 -4.886184076875661 0" scale="1.342 6.057 1"></a-plane>
 <a-plane class="paret" position="-11.53943 -0.67024 -39.84387" width="4" height="2" color="blue" material="opacity: 0; side: double" rotation="0 -4.886184076875661 0" scale="1.342 6.057 1"></a-plane>
-<a-plane class="paret" position="-9.94321 -0.47447 -37.06134" width="4" height="2" color="blue" material="opacity: 0; side: double" rotation="0 65.13498806606225 0" scale="1.34178 6.05738 1"></a-plane>
+<a-plane id="portalbob"class="paret" position="-9.94321 -0.47447 -37.06134" width="4" height="2" color="blue" material="opacity: 0; side: double" rotation="0 65.13498806606225 0" scale="1.34178 6.05738 1"></a-plane>  <!-- aplane puerta -->
 
 <!-- PLANOS INVISIBLES CON COLISIÓN CASA CALAMARDO -->
 
@@ -433,6 +433,16 @@ patricio.addEventListener("click", () => {
         textoPatricio.setAttribute("value", "YA BASTA, NO TE RESPONDERE MAS");
     }
 });
+  
+AFRAME.registerComponent('autotp', {
+  init: function () {
+    this.el.addEventListener('click', () => {
+      window.location.href = "https://fernando252778.github.io/ScapeRoom/mundo3.html";
+    });
+  }
+});
+
+document.querySelector('#portalbob').setAttribute('autotp', '');
   
 AFRAME.registerComponent('autotp', {
   init: function () {
