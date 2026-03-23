@@ -252,7 +252,7 @@ animation="property: scale; dur: 1000;  to: 0.050 0.050 0.050; dir: alternate;  
 
 <!-- PLANOS INVISIBLES CON COLISIÓN BALDE DE CARNADA -->
 
-<a-plane class="paret" position="0.32633 -0.474 30.02648" width="4" height="2" color="blue" material="opacity: 0; side: double" rotation="0 92.85869689905739 0" scale="2.25 6.057 1"></a-plane>
+<a-plane id="portalcarnada" class="paret" position="0.32633 -0.474 30.02648" width="4" height="2" color="blue" material="opacity: 0; side: double" rotation="0 92.85869689905739 0" scale="2.25 6.057 1"></a-plane>
 <a-plane class="paret" position="4.39106 -0.474 34.04975" width="4" height="2" color="blue" material="opacity: 0; side: double" rotation="0 171.99906530929746 0" scale="2.2502 6.057 1"></a-plane>
 <a-plane class="paret" position="8.58448 -0.474 30.02648" width="4" height="2" color="blue" material="opacity: 0; side: double" rotation="0 92.85869689905739 0" scale="2.25 6.057 1"></a-plane>
 <a-plane class="paret" position="4.39106 -0.474 26.16754" width="4" height="2" color="blue" material="opacity: 0; side: double" rotation="0 171.99906530929746 0" scale="2.2502 6.057 1"></a-plane>
@@ -433,6 +433,17 @@ patricio.addEventListener("click", () => {
         textoPatricio.setAttribute("value", "YA BASTA, NO TE RESPONDERE MAS");
     }
 });
+
+AFRAME.registerComponent('autotp3', {
+  init: function () {
+    this.el.addEventListener('click', () => {
+      window.location.href = "https://fernando252778.github.io/ScapeRoom/mundo1.html";
+    });
+  }
+});
+
+document.querySelector('#portalcarnada').setAttribute('autotp3', '');
+
   
 AFRAME.registerComponent('autotp2', {
   init: function () {
