@@ -433,6 +433,16 @@ patricio.addEventListener("click", () => {
         textoPatricio.setAttribute("value", "YA BASTA, NO TE RESPONDERE MAS");
     }
 });
+  
+  AFRAME.registerComponent('autotp5', {
+  init: function () {
+    this.el.addEventListener('click', () => {
+      window.location.href = "https://fernando252778.github.io/ScapeRoom/mundo5.html";
+    });
+  }
+});
+
+document.querySelector('#portalcrustaceo').setAttribute('autotp5', '');
 
 AFRAME.registerComponent('autotp3', {
   init: function () {
