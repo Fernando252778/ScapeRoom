@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Error 404</title>
+    <!--Librerias-->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    
+    <!--Scripts-->
+    <script>
+      // Componente para el quiz
+      AFRAME.registerComponent('quiz', {
+        init: function() {
+          this.el.addEventListener('click', () => {
+            
+            let respuestaCorrecta = false;
+
+            while (!respuestaCorrecta) {
+              let respuesta = prompt("El sistema se ha caido, escribe el comando para reiniciar el sistema");
+
+              if (!respuesta) continue;
+
+              respuesta = respuesta.toLowerCase().trim();
+
+              // Variantes de respuestas validas
+              if (
+                respuesta === "reboot" ||
+                respuesta === "sudo reboot" ||
+                respuesta === "shutdown -r now"
+              ) {
+                respuestaCorrecta = true;
+                alert("Correcto. Reiniciando sistema...");
+                
+                //  Teletransporte
+                window.location.href = "mundo-7.html";
+
+              } else {
+                alert("Incorrecto. Inténtalo de nuevo vez.");
+              }
+            }
+
+          });
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <a-scene cursor="rayOrigin: mouse" raycaster="objects: .clickable">
+
+      <!-- A-planes -->
+      <a-plane src="Cosas/Error.png" position="0.012 1.61 0.812" rotation="0.78 1.77 0" scale="2.218 1.353 0.972" material="side: double"> </a-plane>
+
+      <a-plane src="Cosas/Bob-robot.png" position="-0.0664 1.38075 0.93529" rotation="0.78 1.77 0" scale="0.20625 0.2087 0.972" material="side: double" visible="false" class="clickable" quiz> </a-plane>
+
+      <!-- Fondo por si las moscas -->
+      <a-sky color="#202124"></a-sky>
+
+      <!-- Cámara BLOQUEADA -->
+      <a-entity camera position="0 1.6 1.32038" look-controls="enabled: false" wasd-controls="enabled: false"> </a-entity>
+    </a-scene>
+  </body>
+</html>

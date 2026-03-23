@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Mundo-7</title>
+    <!--Librerias-->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene cursor="rayOrigin: mouse">
+
+      <!--A-assets-->
+      <a-assets>
+        <a-asset-item id="Crus" src="Escenarios/Crustaceo-cascarudo.glb"></a-asset-item>
+        <a-asset-item id="Caja" src="Cosas/Caja-fuerte.glb"></a-asset-item>
+        <a-asset-item id="Formula" src="items/botella.glb"></a-asset-item>
+        <a-asset-item id="Don-1" src="Personajes/Don-cangrejo.glb"></a-asset-item>
+        <a-asset-item id="Robot" src="Personajes/robot-dañado.glb"></a-asset-item>
+        <a-asset-item id="bate" src="Cosas/bate-de-beisbol.glb"></a-asset-item>
+      </a-assets>
+  
+      <!--A-entitys-->
+      <a-entity gltf-model="#Crus" position="-2965.462 118.97 -2070.02" scale="" rotation="0 -260 0"></a-entity>  
+      <a-entity gltf-model="#Caja" position="59.1083 -0.76784 -17.4312" scale="0.08 -0.072 0.049" rotation="180.07 -1691.54 0"></a-entity>
+      <a-entity gltf-model="#Formula" position="56.00252 -0.94175 -19.88217" scale="1.24963 -1.51584 1.22716" rotation="180.07 -1691.54 0"></a-entity>
+
+      <!--Personajes y bate-->
+      <a-entity gltf-model="#Don-1" position="51.29652 -6.538 -15.59127" scale="3.672 -5.971 3.776" rotation="0.206 -195.31500000000003 176.032" class="clickable" don-1-click></a-entity>
+      <a-entity gltf-model="#Robot" position="52.48514 -6.15429 -24.17943" scale="1.1469 -0.96833 1.3164" rotation="0.20569184845196553 -40.515 176.03211522922334" class="clickable" robot-click></a-entity>
+      <a-entity gltf-model="#bate" position="47.52511 -6.53837 -17.90939" scale="7.62317 -8.65486 5.67777" rotation="0.20569184845196553 -40.515 176.03211522922334"></a-entity>
+
+      <!--A-planes-->
+      <a-plane src="Cosas/Suelo.jpg" position="50.03742 -5.16909 -28.6942" rotation="-1.8466429737066434 8.352005779622012 88.00230662752854" width="100" height="100" material="side: double" scale="-0.31873 0.38664 0.86095"></a-plane>
+      <a-plane src="Cosas/Suelo.jpg" position="58.70772 -5.17295 -5.75182" rotation="1.1951899606428973 12.167904695193293 0.5402992008083662" width="100" height="100" material="side: double" scale="-0.3695 0.287 0.86095"></a-plane>
+      <a-plane src="Cosas/techo-2.jpg" position="56.33389 8.85107 -6.53982" rotation="-270 10.68 0" width="100" height="100" material="side: double" scale="-0.335 0.506 1.03"></a-plane>
+
+
+    <!--Cámara fija-->
+  <a-entity camera="" position="41.8306 0.048 -22.28764" rotation="-18 -105.00000000000001 0" look-controls="enabled: false" wasd-controls="enabled: false" data-aframe-inspector-original-camera=""> </a-entity>
+
+
+        <!--Scripts-->
+         <script>
+      // Componente para Don-1
+      AFRAME.registerComponent('don-1-click', {
+        init: function() {
+          let firstClick = true;
+          this.el.addEventListener('click', () => {
+            if (firstClick) {
+              alert("Don: ¿Crees que no te iba a descubrir, Plakton? Tu robot no se parecía en nada a bob esponja y además bob esta de viaje y aún no ha llegado.");
+              firstClick = false;
+            } else {
+              // Segundo click → ir al video
+              window.location.href = "https://www.youtube.com/watch?v=lr07RM3bMBs";
+            }
+          });
+        }
+      });
+
+      // Componente para el Robot
+      AFRAME.registerComponent('robot-click', {
+        init: function() {
+          this.el.addEventListener('click', () => {
+            alert("El robot ha sido descubierto por Don y ha sido destruido. ¡Misión fallida!");
+          });
+        }
+      });
+
+      // Componente original de navegación
+      AFRAME.registerComponent("mylink", {
+        init: function() {  
+          this.el.addEventListener("click", (e) => {              
+            window.location = this.data.href;      
+          })
+        }
+      })
+    </script>
+    </a-scene>
+  </body>
+</html>
